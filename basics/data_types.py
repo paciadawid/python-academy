@@ -45,3 +45,13 @@ pajton = {
     "toys": ["mouse", "ball", "birds"],
     "colours": ("white", "grey", "black")
 }
+
+hobby = "sleeping"
+
+print("I like " + hobby + " a lot")
+print("I like {} a lot".format(hobby))  # interpolation
+print(f"I like {hobby} a lot")  # f-strings
+
+print("My " + pajton["animal_type"] + " has " + str(pajton["age"]) + " years")
+print("My {} has {} years".format(pajton["animal_type"], pajton["age"]))
+print(f"My {pajton['animal_type']} has {pajton['age']} years")
