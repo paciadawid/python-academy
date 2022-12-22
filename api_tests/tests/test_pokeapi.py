@@ -1,7 +1,8 @@
 import unittest
-import requests
+from api_tests.src.helpers import *
 
-from api_tests.api_handler import APIHandler
+from api_tests.src.api_handler import APIHandler
+
 
 class TestPokemons(unittest.TestCase):
 
@@ -9,7 +10,7 @@ class TestPokemons(unittest.TestCase):
         self.api_handler = APIHandler()
 
     def test_default_pokemons(self):
-        response = requests.get(self.url + self.pokemon_endpoint)
+        response = self.api_handler.get_pokemons()
         response_body = response.json()
         response_time = response.elapsed.microseconds // 1000
         self.assertTrue(response_body)
@@ -36,6 +37,14 @@ class TestPokemons(unittest.TestCase):
 
         response_body = self.api_handler.get_shapes(name_or_id=third_shape)
         self.assertEqual(3, response_body["id"])
+
+    def test_random_pokemon(self):
+        random_id = get_random_id(1, 905)
+        response_body = self.api_handler.get_pokemons(name_or_id=random_id)
+        name = response_body["name"]
+        response_body = self.api_handler.get_pokemons(name_or_id=name)
+        self.assertTrue(response_body["abilities"])
+        self.assertGreater(len(response_body["abilities"]), 0)
 
 
 if __name__ == '__main__':

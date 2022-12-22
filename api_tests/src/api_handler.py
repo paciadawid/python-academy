@@ -1,4 +1,5 @@
 import requests
+from faker import Faker
 
 
 class APIHandler:
@@ -13,3 +14,4 @@ class APIHandler:
     def get_shapes(self, name_or_id="", params=None):
         response_body = requests.get(f"{self.url}{self.shape_endpoint}/{name_or_id}", params=params).json()
         return response_body
+
