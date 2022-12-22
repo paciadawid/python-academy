@@ -1,9 +1,7 @@
 import unittest
-
 import requests
 
 from api_tests.api_handler import APIHandler
-
 
 class TestPokemons(unittest.TestCase):
 
@@ -30,6 +28,14 @@ class TestPokemons(unittest.TestCase):
         self.assertEqual(params["limit"], len(response_body["results"]))
         self.assertRegex(response_body["results"][0]["url"], f"/{params['offset'] + 1}")
         self.assertIn(f"/{params['offset'] + 1}", response_body["results"][0]["url"])
+
+    def test_pokemon_shape_match_id_name(self):
+        response_body = self.api_handler.get_shapes()
+        self.assertEqual(response_body["count"], len(response_body["results"]))
+        third_shape = response_body["results"][2]["name"]
+
+        response_body = self.api_handler.get_shapes(name_or_id=third_shape)
+        self.assertEqual(3, response_body["id"])
 
 
 if __name__ == '__main__':
