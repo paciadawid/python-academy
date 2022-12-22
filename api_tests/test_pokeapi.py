@@ -25,7 +25,7 @@ class TestPokemons(unittest.TestCase):
             "limit": 10,
             "offset": 20
         }
-        response_body = self.api_handler.get_pokemons(name_or_id="pikachu")
+        response_body = self.api_handler.get_pokemons(params=params)
 
         self.assertEqual(params["limit"], len(response_body["results"]))
         self.assertRegex(response_body["results"][0]["url"], f"/{params['offset'] + 1}")
