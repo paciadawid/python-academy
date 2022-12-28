@@ -1,7 +1,7 @@
 import unittest
 from api_tests.src.helpers import *
 
-from api_tests.src.api_handler import APIHandler
+from api_tests.src.pokeapi_api_handler import APIHandler
 
 
 class TestPokemons(unittest.TestCase):
