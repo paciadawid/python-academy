@@ -13,7 +13,7 @@ class APIHandler:
     users_endpoint = "/users"
 
     def __init__(self, token="", api_ver="v2"):
-        self.url = f"{self.url}{api_ver}"
+        self.url = f"{self.url}{self.api_ver_dict[api_ver]}"
         if not token:
             token = os.environ["GOREST_TOKEN"]
         self.headers = {
