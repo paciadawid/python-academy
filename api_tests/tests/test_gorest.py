@@ -23,6 +23,24 @@ class TestIP(unittest.TestCase):
         user = self.api_handler.get_user(response_body["id"])
         self.assertDictContainsSubset(new_user, user)
 
+    def test_user_e2e_flo(self):
+        new_user = {
+            "name": self.fake.name(),
+            "gender": "male",
+            "email": self.fake.email(),
+            "status": "active"
+        }
+        user_id = self.api_handler.create_user(new_user)["id"]
+        self.assertTrue(user_id)
+
+        update_data = {
+            "name": self.fake.name()
+        }
+        user_data = self.api_handler.update_user(user_id, update_data)
+        self.assertEqual(user_data["name"], update_data["name"])
+        self.api_handler.delete_user(user_id)
+        self.api_handler.get_user(user_id, expected_status_code=404)
+
 
 if __name__ == '__main__':
     unittest.main()
