@@ -10,12 +10,13 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class UnicornTestSearch(unittest.TestCase):
-
     product_tab_selector = (By.XPATH, "//a[@href='/products']")
     search_product_input_selector = (By.ID, "search_product")
 
     def setUp(self) -> None:
-        self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        self.driver = webdriver.Remote("http://192.168.1.28:4444", desired_capabilities={"browser": "chrome"})
+
+#        self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         self.driver.implicitly_wait(5)
         self.driver.get("https://automationexercise.com/")
         self.driver.find_element(*self.product_tab_selector).click()
