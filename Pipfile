@@ -9,7 +9,7 @@ requests = "*"
 faker = "*"
 webdriver-manager = "*"
 pytest-xdist = "*"
-pytest = "*"
+behave = "*"
 
 [dev-packages]
 

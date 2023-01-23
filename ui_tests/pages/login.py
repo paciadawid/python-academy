@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC  # noqa
-
+from selenium.common import NoSuchElementException, TimeoutException
 from ui_tests.pages.base import BasePage
 
 
@@ -20,4 +20,9 @@ class LoginPage(BasePage):
         self.driver.find_element(*self.password_field_selector).send_keys(password)
         time.sleep(3)
         self.driver.find_element(*self.login_button_selector).click()
-        WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(self.logged_user_selector))
+
+    def check_if_logged_in(self):
+        try:
+            return WebDriverWait(self.driver, 3).until(EC.visibility_of_element_located(self.logged_user_selector))
+        except TimeoutException:
+            return False
