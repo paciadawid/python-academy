@@ -14,6 +14,7 @@ class ProductsPage(BasePage):
     product_element_selector = (By.CLASS_NAME, "single-products")
     add_to_cart_button_selector = (By.CSS_SELECTOR, ".product-overlay a")
     continue_shopping_button_selector = (By.CLASS_NAME, "btn-success")
+    view_product_button_selector = (By.CLASS_NAME, "choose")
 
     def search_product(self, product_name):
         self.driver.find_element(*self.product_tab_selector).click()
@@ -30,3 +31,6 @@ class ProductsPage(BasePage):
             EC.element_to_be_clickable(self.add_to_cart_button_selector)).click()
         WebDriverWait(self.driver, self.timeout).until(
             EC.element_to_be_clickable(self.continue_shopping_button_selector)).click()
+
+    def view_product(self):
+        self.driver.find_element(*self.view_product_button_selector).click()

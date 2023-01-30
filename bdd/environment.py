@@ -5,6 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from ui_tests.pages.cart import CartPage
 from ui_tests.pages.home import HomePage
 from ui_tests.pages.login import LoginPage
+from ui_tests.pages.product_details import ProductDetailsPage
 from ui_tests.pages.products import ProductsPage
 
 
@@ -17,6 +18,7 @@ def before_scenario(context, scenario):
     context.login_page = LoginPage(context.driver)
     context.products_page = ProductsPage(context.driver)
     context.cart_page = CartPage(context.driver)
+    context.product_details_page = ProductDetailsPage(context.driver)
 
     context.home_page.close_ad_by_refresh()
 
