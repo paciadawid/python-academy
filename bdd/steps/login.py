@@ -27,3 +27,9 @@ def step_impl(context, status):
         assert not success
     else:
         raise KeyError("Choose between 'in' and 'out'")
+
+
+@given("I'm logged out")
+def step_impl(context):
+    assert not context.login_page.check_if_logged_in()
+
