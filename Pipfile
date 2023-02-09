@@ -10,6 +10,7 @@ faker = "*"
 webdriver-manager = "*"
 pytest-xdist = "*"
 behave = "*"
+appium-python-client = "*"
 
 [dev-packages]
 
