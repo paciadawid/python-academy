@@ -16,10 +16,11 @@ class HomePage(BasePage):
     # dynamic selectors
     digit_button_selector = (AppiumBy.ID, "digit_{argument}")
 
-    def add_values(self, x, y):
-        self.click(self.parse_dynamic_selector(self.digit_button_selector, x))
-        self.click(self.plus_button_selector)
-        self.click(self.parse_dynamic_selector(self.digit_button_selector, y))
+    def add_values(self, *numbers):
+        for number in numbers:
+            for digit in str(number):
+                self.click(self.parse_dynamic_selector(self.digit_button_selector, digit))
+            self.click(self.plus_button_selector)
         self.click(self.equals_button_selector)
 
     def get_result(self):
