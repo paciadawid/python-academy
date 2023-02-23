@@ -11,6 +11,7 @@ webdriver-manager = "*"
 pytest-xdist = "*"
 behave = "*"
 appium-python-client = "*"
+locust = "*"
 
 [dev-packages]
 
