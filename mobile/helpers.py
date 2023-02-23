@@ -11,6 +11,7 @@ def create_driver(platform, app_name):
     desired_caps = {}
     desired_caps['platformName'] = platform
     desired_caps['app'] = app_path
+    desired_caps['autoGrantPermissions'] = True
 
     driver = webdriver.Remote('http://localhost:4723/wd/hub', desired_caps)
 
