@@ -8,6 +8,8 @@ from ui_tests.pages.login import LoginPage
 from ui_tests.pages.product_details import ProductDetailsPage
 from ui_tests.pages.products import ProductsPage
 
+import allure
+
 
 def before_scenario(context, scenario):
     context.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
@@ -24,4 +26,6 @@ def before_scenario(context, scenario):
 
 
 def after_scenario(context, scenario):
+    if "failed" in str(scenario.status):
+        allure.attach(context.driver.get_screenshot_as_png(), attachment_type=allure.attachment_type.PNG)
     context.driver.quit()

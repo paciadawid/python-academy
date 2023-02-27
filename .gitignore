@@ -5,3 +5,6 @@ __pycache__
 .log
 *.jar
 *.apk
+report
+allure*
+*.png
