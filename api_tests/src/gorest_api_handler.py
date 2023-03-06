@@ -6,9 +6,7 @@ class APIHandler:
     users_endpoint = "/users"
 
     def __init__(self, token):
-        self.headers = {
-            "Authorization": f"Bearer {token}"
-        }
+        self.headers = {"Authorization": f"Bearer {token}"}
 
     def create_user(self, user_data, expected_status_code=201):
         res = requests.post(f"{self.url}{self.users_endpoint}", json=user_data, headers=self.headers)
@@ -23,7 +21,11 @@ class APIHandler:
         return res.json()
 
     def update_user(self, user_id, user_data, expected_status_code=200):
-        res = requests.put(f"{self.url}{self.users_endpoint}/{user_id}", json=user_data, headers=self.headers)
+        res = requests.put(
+            f"{self.url}{self.users_endpoint}/{user_id}",
+            json=user_data,
+            headers=self.headers,
+        )
         if expected_status_code:
             assert expected_status_code == res.status_code
         return res.json()

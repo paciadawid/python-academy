@@ -1,21 +1,20 @@
 import unittest
 
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from ui_tests.pages.home import HomePage
-from ui_tests.pages.login import LoginPage
 from selenium.webdriver.chrome.options import ChromiumOptions
 
-class MyTestCase(unittest.TestCase):
+from ui_tests.pages.home import HomePage
+from ui_tests.pages.login import LoginPage
 
+
+class MyTestCase(unittest.TestCase):
     def setUp(self) -> None:
         option = ChromiumOptions()
         option.add_argument("--headless")
 
         self.driver = webdriver.Remote("http://192.168.1.28:4444", options=option)
 
-#       self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        #       self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         self.driver.implicitly_wait(5)
         self.driver.get("https://automationexercise.com/")
 
@@ -35,10 +34,9 @@ class MyTestCase(unittest.TestCase):
         products = self.home_page.get_visible_products()
         self.assertEqual(len(products), number_of_items)
 
-
     def tearDown(self) -> None:
         self.driver.quit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

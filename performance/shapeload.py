@@ -1,7 +1,4 @@
-import math
-from locust import HttpUser, TaskSet, task, constant
-from locust import LoadTestShape
-
+from locust import HttpUser, LoadTestShape, constant, task
 
 
 class WebsiteUser(HttpUser):
@@ -13,13 +10,11 @@ class WebsiteUser(HttpUser):
         self.client.get("/")
 
 
-
 class CustomShape(LoadTestShape):
     stages = [
         {"duration": 10, "users": 1, "spawn_rate": 1},
-        {"duration": 20, "users": 10, "spawn_rate": 2}
+        {"duration": 20, "users": 10, "spawn_rate": 2},
     ]
-
 
     def tick(self):
         run_time = self.get_run_time()

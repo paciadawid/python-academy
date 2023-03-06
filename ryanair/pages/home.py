@@ -5,8 +5,14 @@ from ryanair.pages.base import BasePage
 
 class HomePage(BasePage):
     cookie_button_selector = (By.CLASS_NAME, "cookie-popup-with-overlay__button")
-    one_way_button_selector = (By.XPATH, "//*[@data-ref='flight-search-trip-type__one-way-trip']")
-    return_button_selector = (By.XPATH, "//*[@data-ref='flight-search-trip-type__return-trip']")
+    one_way_button_selector = (
+        By.XPATH,
+        "//*[@data-ref='flight-search-trip-type__one-way-trip']",
+    )
+    return_button_selector = (
+        By.XPATH,
+        "//*[@data-ref='flight-search-trip-type__return-trip']",
+    )
     departure_field_selector = (By.ID, "input-button__departure")
     destination_field_selector = (By.ID, "input-button__destination")
 
@@ -22,7 +28,7 @@ class HomePage(BasePage):
         elif trip_type == "return":
             self.click(self.return_button_selector)
         else:
-            Exception("Choose 'one-way' or 'return'")
+            raise ValueError("Choose 'one-way' or 'return'")
 
     def select_departure_city(self, airport_code):
         self.click(self.departure_field_selector)

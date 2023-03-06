@@ -1,8 +1,8 @@
 isbn = "030640615"
 
 total_sum = 0
-for i in range(len(isbn)):
-    number = int(isbn[i])
+for i, digit in enumerate(isbn):
+    number = int(digit)
     total_sum += (i + 1) * number
 
 checksum = total_sum % 11

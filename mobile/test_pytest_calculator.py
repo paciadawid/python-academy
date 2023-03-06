@@ -1,9 +1,7 @@
-import time
+import allure
 
 from mobile.helpers import create_driver
 from mobile.screens.home import HomePage
-
-import allure
 
 
 def test_add_digits():
@@ -12,5 +10,8 @@ def test_add_digits():
     home_page.add_values(3, 123, 5)
     assert home_page.get_result() == 131
 
-    allure.attach.file(driver.save_screenshot("post_assertion_screenshot.png"), attachment_type=allure.attachment_type.PNG)
+    allure.attach.file(
+        driver.save_screenshot("post_assertion_screenshot.png"),
+        attachment_type=allure.attachment_type.PNG,
+    )
     driver.quit()

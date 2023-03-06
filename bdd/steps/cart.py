@@ -1,13 +1,13 @@
-from behave import *
+from behave import step, then, when
 
 
 @when("I navigate to cart")
-def step_impl(context):
+def navigate_to_cart(context):
     context.cart_page.navigate_to_cart()
 
 
 @then("I see empty cart")
-def step_impl(context):
+def check_empty_cart(context):
     assert context.cart_page.check_if_empty_cart()
 
 
@@ -19,10 +19,10 @@ def step_impl(context, number_of_items, item_name):
 
 
 @step("I proceed to checkout")
-def step_impl(context):
+def go_to_checkout(context):
     context.cart_page.proceed_to_checkout()
 
 
 @then("I see login modal")
-def step_impl(context):
+def modal_check(context):
     context.cart_page.check_if_login_modal_visible()

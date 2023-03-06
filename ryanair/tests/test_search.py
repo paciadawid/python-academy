@@ -8,7 +8,6 @@ from ryanair.pages.home import HomePage
 
 
 class MyTestCase(unittest.TestCase):
-
     def setUp(self) -> None:
         self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         self.driver.implicitly_wait(5)
@@ -25,5 +24,5 @@ class MyTestCase(unittest.TestCase):
         self.driver.quit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

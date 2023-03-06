@@ -28,9 +28,11 @@ class ProductsPage(BasePage):
         product_tile = self.driver.find_element(*self.product_element_selector)
         ActionChains(self.driver).move_to_element(product_tile).perform()
         WebDriverWait(self.driver, self.timeout).until(
-            EC.element_to_be_clickable(self.add_to_cart_button_selector)).click()
+            EC.element_to_be_clickable(self.add_to_cart_button_selector)
+        ).click()
         WebDriverWait(self.driver, self.timeout).until(
-            EC.element_to_be_clickable(self.continue_shopping_button_selector)).click()
+            EC.element_to_be_clickable(self.continue_shopping_button_selector)
+        ).click()
 
     def view_product(self):
         self.driver.find_element(*self.view_product_button_selector).click()

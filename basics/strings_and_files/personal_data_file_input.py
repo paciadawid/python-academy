@@ -1,7 +1,7 @@
 personal_dict = {}
 
 # solutions 1
-with open("personal.txt", "r") as f:
+with open("personal.txt", "r", encoding="utf-8") as f:
     lines = f.readlines()
 
     for line in lines:
@@ -12,7 +12,7 @@ with open("personal.txt", "r") as f:
             personal_dict[key] = value
 
 # solution 2
-with open("personal.txt", "r") as f:
+with open("personal.txt", "r", encoding="utf-8") as f:
     lines = f.readlines()
     records = []
     for line in lines:

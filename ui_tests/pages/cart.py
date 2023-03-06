@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from selenium.common import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC  # noqa
@@ -28,6 +27,7 @@ class CartPage(BasePage):
     def check_if_login_modal_visible(self):
         try:
             return WebDriverWait(self.driver, 3).until(
-                EC.visibility_of_element_located(self.close_checkout_modal_selector))
+                EC.visibility_of_element_located(self.close_checkout_modal_selector)
+            )
         except TimeoutException:
             return False

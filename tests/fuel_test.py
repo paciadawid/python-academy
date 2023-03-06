@@ -4,7 +4,6 @@ from basics.oop.calculate_fuel import calculate_fuel
 
 
 class MyTestCase(unittest.TestCase):
-
     def test_12(self):
         self.assertEqual(2, calculate_fuel(12))
 
@@ -27,5 +26,5 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(2, calculate_fuel(12.5))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

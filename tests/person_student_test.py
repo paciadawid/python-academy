@@ -4,7 +4,6 @@ from basics.oop.person import Person, Student
 
 
 class TestPerson(unittest.TestCase):
-
     def setUp(self) -> None:
         self.stefan = Person("Stefan", "Testowy", 1999)
 
@@ -17,7 +16,6 @@ class TestPerson(unittest.TestCase):
 
 
 class TestStudent(unittest.TestCase):
-
     def setUp(self) -> None:
         self.student = Student("Nowy", "Student", 1999)
 
@@ -31,5 +29,5 @@ class TestStudent(unittest.TestCase):
         self.assertFalse(self.student.initial_grades)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

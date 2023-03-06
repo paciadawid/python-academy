@@ -2,7 +2,6 @@ from datetime import date
 
 
 class Person:
-
     def __init__(self, name: str, surname: str, year_of_birth: int):
         self._name = name
         self._surname = surname
@@ -25,7 +24,6 @@ class Person:
 
 
 class Employee(Person):
-
     def __init__(self, name: str, surname: str, year_of_birth: int, type_of_employment: str):
         super().__init__(name, surname, year_of_birth)
         self.type_of_employment = type_of_employment
@@ -35,7 +33,6 @@ class Employee(Person):
 
 
 class Student(Person):
-
     def __init__(self, name: str, surname: str, year_of_birth: int, initial_grades=None):
         super().__init__(name, surname, year_of_birth)
         if initial_grades is None:
@@ -43,9 +40,10 @@ class Student(Person):
         self.initial_grades = initial_grades
 
     def add_grade(self, grade: int):
-        if type(grade) is not int:
+        if not isinstance(grade, int):
             return False
         self.initial_grades.append(grade)
+        return None
 
     def calculate_grade(self) -> float:
         grade = round(sum(self.initial_grades) / len(self.initial_grades))

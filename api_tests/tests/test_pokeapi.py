@@ -1,11 +1,10 @@
 import unittest
-from api_tests.src.helpers import *
 
+from api_tests.src.helpers import get_random_id
 from api_tests.src.pokeapi_api_handler import APIHandler
 
 
 class TestPokemons(unittest.TestCase):
-
     def setUp(self) -> None:
         self.api_handler = APIHandler()
 
@@ -20,10 +19,7 @@ class TestPokemons(unittest.TestCase):
         self.assertLess(len(response.content), 100 * 1000)
 
     def test_pokemons_with_limit_and_offset(self):
-        params = {
-            "limit": 10,
-            "offset": 20
-        }
+        params = {"limit": 10, "offset": 20}
         response_body = self.api_handler.get_pokemons(params=params)
 
         self.assertEqual(params["limit"], len(response_body["results"]))
@@ -47,5 +43,5 @@ class TestPokemons(unittest.TestCase):
         self.assertGreater(len(response_body["abilities"]), 0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

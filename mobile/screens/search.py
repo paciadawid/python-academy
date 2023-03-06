@@ -1,6 +1,7 @@
 import time
 
 from appium.webdriver.common.appiumby import AppiumBy
+
 from mobile.screens.base import BasePage
 
 
@@ -15,4 +16,4 @@ class SearchPage(BasePage):
             if self.check_if_visible(self.origin_button_selector):
                 break
             if time.time() - start_time > self.timeout:
-                raise Exception("Element not found")
+                raise TimeoutError("Element not found")

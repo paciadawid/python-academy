@@ -4,7 +4,6 @@ from basics.oop.calculator import Calculator
 
 
 class TestCalculator(unittest.TestCase):
-
     def setUp(self) -> None:
         self.calculator = Calculator()
 
@@ -15,5 +14,5 @@ class TestCalculator(unittest.TestCase):
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

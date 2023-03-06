@@ -1,7 +1,7 @@
 from selenium import webdriver
 
-class BasePage:
 
+class BasePage:
     timeout = 10
 
     def __init__(self, driver: webdriver.Chrome):

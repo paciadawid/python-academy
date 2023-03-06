@@ -30,13 +30,15 @@ class HomePage(BasePage):
 
     def select_random_subcategory(self):
         subcategories = WebDriverWait(self.driver, self.timeout).until(
-            EC.visibility_of_all_elements_located(self.subcategory_tab_selector))
+            EC.visibility_of_all_elements_located(self.subcategory_tab_selector)
+        )
         chosen_subcategory = random.choice(subcategories)
         WebDriverWait(self.driver, self.timeout).until(EC.element_to_be_clickable(chosen_subcategory)).click()
 
     def get_visible_products(self):
         products = WebDriverWait(self.driver, self.timeout).until(
-            EC.visibility_of_all_elements_located(self.product_item_selector))
+            EC.visibility_of_all_elements_located(self.product_item_selector)
+        )
         return products
 
     def select_random_brand(self):

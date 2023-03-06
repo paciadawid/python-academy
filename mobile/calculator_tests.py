@@ -5,7 +5,6 @@ from mobile.screens.home import HomePage
 
 
 class MyTestCase(unittest.TestCase):
-
     def setUp(self) -> None:
         self.driver = create_driver("Android", "calculator.apk")
         self.home_page = HomePage(self.driver)
@@ -22,5 +21,5 @@ class MyTestCase(unittest.TestCase):
         self.driver.quit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

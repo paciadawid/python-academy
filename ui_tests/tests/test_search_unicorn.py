@@ -1,12 +1,10 @@
 import unittest
 
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
-from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from webdriver_manager.chrome import ChromeDriverManager
 
 
 class UnicornTestSearch(unittest.TestCase):
@@ -16,7 +14,7 @@ class UnicornTestSearch(unittest.TestCase):
     def setUp(self) -> None:
         self.driver = webdriver.Remote("http://192.168.1.28:4444", desired_capabilities={"browser": "chrome"})
 
-#        self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        #        self.driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
         self.driver.implicitly_wait(5)
         self.driver.get("https://automationexercise.com/")
         self.driver.find_element(*self.product_tab_selector).click()
@@ -30,12 +28,13 @@ class UnicornTestSearch(unittest.TestCase):
         self.driver.find_element(By.ID, "search_product").send_keys("unicorn")
         self.driver.find_element(By.ID, "submit_search").click()
         products = WebDriverWait(self.driver, 10).until(
-            EC.visibility_of_all_elements_located((By.CLASS_NAME, "single-products")))
+            EC.visibility_of_all_elements_located((By.CLASS_NAME, "single-products"))
+        )
         self.assertGreaterEqual(len(products), 2)
 
     def tearDown(self) -> None:
         self.driver.quit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

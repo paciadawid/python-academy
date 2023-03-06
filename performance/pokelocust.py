@@ -1,8 +1,9 @@
-from locust import HttpUser, task, between
 import random
 
-class HelloWorldUser(HttpUser):
+from locust import HttpUser, between, task
 
+
+class HelloWorldUser(HttpUser):
     wait_time = between(0.5, 2)
 
     @task

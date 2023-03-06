@@ -1,16 +1,10 @@
 destination = "Nicosia"
 
-destinations_dict = {
-    "Nicosia": 1980,
-    "Reykjavik": 2900,
-    "Chartum": None,
-    "Gdansk": 485
-}
+destinations_dict = {"Nicosia": 1980, "Reykjavik": 2900, "Chartum": None, "Gdansk": 485}
 
 distance = destinations_dict[destination]
 
 if distance:
-
     cost = distance * 2
 
     if distance < 2000:

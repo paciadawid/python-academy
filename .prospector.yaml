@@ -1,0 +1,4 @@
+pylint:
+  disable:
+    - W3101
+    - C0209

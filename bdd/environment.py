@@ -1,7 +1,8 @@
+import allure
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
 
 from ui_tests.pages.cart import CartPage
 from ui_tests.pages.home import HomePage
@@ -9,10 +10,8 @@ from ui_tests.pages.login import LoginPage
 from ui_tests.pages.product_details import ProductDetailsPage
 from ui_tests.pages.products import ProductsPage
 
-import allure
 
-
-def before_scenario(context, scenario):
+def before_scenario(context, _):
     options = Options()
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
@@ -32,5 +31,8 @@ def before_scenario(context, scenario):
 
 def after_scenario(context, scenario):
     if "failed" in str(scenario.status):
-        allure.attach(context.driver.get_screenshot_as_png(), attachment_type=allure.attachment_type.PNG)
+        allure.attach(
+            context.driver.get_screenshot_as_png(),
+            attachment_type=allure.attachment_type.PNG,
+        )
     context.driver.quit()
