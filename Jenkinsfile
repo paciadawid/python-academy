@@ -1,4 +1,10 @@
-   
-  
-asdasdad
-sd
+pipeline {
+    agent { dockerfile true }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'behave .'
+            }
+        }
+    }
+}
