@@ -19,7 +19,9 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install prospector
+          pip install pipenv
+          pipenv install
+          pipenv install prospector
       - name: Lint with prospector
         run: |
-          prospector .
+          pipenv run prospector .
