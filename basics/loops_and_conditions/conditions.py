@@ -1,5 +1,4 @@
 destination = "Nicosia"
-xXX_XAaxs = 1
 destinations_dict = {"Nicosia": 1980, "Reykjavik": 2900, "Chartum": None, "Gdansk": 485}
 
 distance = destinations_dict[destination]
