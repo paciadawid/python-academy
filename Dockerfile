@@ -8,3 +8,4 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 RUN apt-get update && apt-get -y install google-chrome-stable
 #RUN pipenv run behave -f allure_behave.formatter:AllureFormatter -o result-folder bdd/login.feature
 #COPY . result-folder-docker
+
